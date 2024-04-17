@@ -1,0 +1,31 @@
+.search-icon {
+    position: absolute;
+    z-index: 10px;
+    top: 10px;
+    right: 10%;
+    color: blue;
+}
+
+.card {
+    border-radius: 5px;
+    background-color: #f8f9fa;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+    margin-left: 5px;
+    margin: 2px;
+    
+  }
+
+.carousel-item {
+    height: 65vh;
+    min-height: 350px;
+    background: no-repeat center center scroll;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+  }
+
+  .card-body img:hover {
+    transform: scale(1.1); /* Scale up the image slightly on hover */
+  }
+

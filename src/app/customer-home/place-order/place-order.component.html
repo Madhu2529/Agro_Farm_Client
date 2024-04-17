@@ -1,0 +1,195 @@
+<br>
+
+<h3 class="success-message text-center" *ngIf="successMessage ">{{successMessage}}</h3>
+<h3 class="error-message text-center" *ngIf="errorMessage ">{{errorMessage}}</h3>
+
+<br>
+
+<div class="font-weight-bold mybtn-right mb-2 text-info"
+    style="font-size: 25px; font-family: Georgia, 'Times New Roman', Times, serif;">
+    Amount to be paid
+</div>
+
+<br>
+
+<div class="mybtn-right" style="font-size: 20px;">
+    <mark style="background-color: rgb(211, 163, 16);">{{grandTotal}}</mark>
+</div>
+
+<br>
+
+<div class="mybtn-left">
+    <button type="button" class="btn bg-dark btn-secondary" routerLink="../card">Add New Card</button>
+</div>
+
+<div class="con">
+
+    <h3 class="title"
+        style="color: rgb(118, 97, 110); font-size: 25px; font-family: Verdana, Geneva, Tahoma, sans-serif;">
+        <hr><b>Your Saved Debit Cards</b>
+        <hr>
+    </h3>
+    <div *ngIf="!viewCardDetails">
+        <div *ngFor="let card1 of cardList1; let i1=index" style="padding: 1%;">
+            <div class="cardParent">
+                <div class="row">
+                    <div class="col-md-3 radioDesign">
+                        <input type="radio" hidden name="pay" (click)="selectExistingCards1(i1); confirmOrder1=false;"
+                            [id]="'cardL1'+i1" />
+                    </div>
+                    <label [for]="'cardL1'+i1" class="col-md-6 cardData">
+                        <br />
+                        <span class="cNum">{{card1.cardNumber|slice:0:4}} - {{card1.cardNumber|slice:4:8}} -
+                            {{card1.cardNumber|slice:8:12}} - {{card1.cardNumber|slice:12:16}}
+                        </span>
+                        <br />
+                        <span class="cName">
+                            {{card1.nameOnCard}}
+                        </span>
+                        <br />
+                        <span class="cData">
+                            <strong>EXPIRY DATE:</strong>{{card1.expiryDate|date:'MM/YY'}}
+                        </span>
+                        <br />
+                    </label> 
+                    <div class="row">
+                        <div *ngIf="i1==selectedI1" class="col-md-9 payBlock">
+                            <div class="col card-block">
+                                <br />
+                                <button class="btn btn-primary payBtn" [disabled]="selectedI1 != i1"
+                                    (click)="placeOrder(card1); confirmOrder1=true;">
+                                    Confirm Order
+                                </button>
+                                <br />
+                            </div>
+                            <div class="row">
+                                <div *ngIf="confirmOrder1" class="col-md-9 payBlock">
+                                    <div class="col card-block">
+                                        <strong>Enter Order Id:</strong>
+                                        <div class="input-group">
+                                            <input type="text" placeholder="Enter the OrderId generated above"
+                                                class="form-control ml-5 mr-4" [(ngModel)]="orderId" />
+                                        </div>
+                                        <br />
+                                        <strong>Enter CVV:</strong>
+                                        <div class="input-group">
+                                            <input type="password" placeholder="Enter your Debit Card CVV"
+                                                class="form-control ml-5 mr-4" [(ngModel)]="cvvg"
+                                                (ngModelChange)="validation()" />
+                                        </div>
+                                        <br>
+                                        <button class="btn btn-success payBtn" (click)="makePayment(card1)"
+                                            [disabled]="showError || selectedI1 != i1">Pay</button>
+                                        <br />
+                                        <div *ngIf="showError" class="text-danger">{{showError}}</div>
+                                        <br />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div *ngIf="!cardList1 || cardList1.length==0" class="error-message">
+                No debit cards are added
+            </div>
+        </div>
+    </div>
+
+    <br><br>
+
+
+    <!-- Write a code to display the credit card details like card type, number, name and expiry date.
+        On selecting the particular order, Confirm Order should be displayed.
+        After confirming the order, Payment should be done by providing OrderId and CVV. -->
+
+
+
+        <h3 class="title"
+        style="color: rgb(118, 97, 110); font-size: 25px; font-family: Verdana, Geneva, Tahoma, sans-serif;">
+        <hr><b>Your Saved Credit Cards</b>
+        <hr>
+    </h3>
+    <div *ngIf="!viewCardDetails">
+        <div *ngFor="let card2 of cardList2; let i2=index" style="padding: 1%;">
+            <div class="cardParent">
+                <div class="row">
+                    <div class="col-md-3 radioDesign">
+                        <input type="radio" name="pay" (click)="selectExistingCards2(i2); confirmOrder2=false;"
+                            [id]="'cardL2'+i2" />
+                    </div>
+                    <label [for]="'cardL2'+i2" class="col-md-6 cardData">
+                        <br />
+                        <span class="cNum">{{card2.cardNumber|slice:0:4}} - {{card2.cardNumber|slice:4:8}} -
+                            {{card2.cardNumber|slice:8:12}} - {{card2.cardNumber|slice:12:16}}
+                        </span>
+                        <br />
+                        <span class="cName">
+                            {{card2.nameOnCard}}
+                        </span>
+                        <br />
+                        <span class="cData">
+                            <strong>EXPIRY DATE:</strong>{{card2.expiryDate|date:'MM/YY'}}
+                        </span>
+                        <br />
+                    </label> 
+                    <div class="row">
+                        <div *ngIf="i2==selectedI2" class="col-md-9 payBlock">
+                            <div class="col card-block">
+                                <br />
+                                <button class="btn btn-primary payBtn" [disabled]="selectedI2 != i2"
+                                    (click)="placeOrder(card2); confirmOrder2=true;">
+                                    Confirm Order
+                                </button>
+                                <br />
+                            </div>
+                            <div class="row">
+                                <div *ngIf="confirmOrder2" class="col-md-9 payBlock">
+                                    <div class="col card-block">
+                                        <strong>Enter Order Id:</strong>
+                                        <div class="input-group">
+                                            <input type="text" placeholder="Enter the OrderId generated above"
+                                                class="form-control ml-5 mr-4" [(ngModel)]="orderId" />
+                                        </div>
+                                        <br />
+                                        <strong>Enter CVV:</strong>
+                                        <div class="input-group">
+                                            <input type="password" placeholder="Enter your Credit Card CVV"
+                                                class="form-control ml-5 mr-4" [(ngModel)]="cvvg"
+                                                (ngModelChange)="validation()" />
+                                        </div>
+                                        <br>
+                                        <button class="btn btn-success payBtn" (click)="makePayment(card2)"
+                                            [disabled]="showError || selectedI2 != i2">Pay</button>
+                                        <br />
+                                        <div *ngIf="showError" class="text-danger">{{showError}}</div>
+                                        <br />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div *ngIf="!cardList2 || cardList2.length==0" class="error-message">
+                No Credit cards are added
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="overlay" *ngIf="popUp">
+        <div class="popup">
+            <h2 *ngIf="successMessage">Order Placed...</h2>
+            <h2 *ngIf="errorMessage">Oops...</h2>
+            <a class="close" (click)="popUp=false; goToOrders()">&times;</a>
+            <div class="content text-success" *ngIf="successMessage">
+                {{successMessage}}
+            </div>
+            <div class="content text-danger" *ngIf="errorMessage">
+                {{errorMessage}}
+            </div>
+        </div>
+    </div>
+</div>

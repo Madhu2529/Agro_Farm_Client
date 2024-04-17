@@ -1,0 +1,5 @@
+.card-body {
+    background-image: url("/assets/agri.jpg");
+    background-size: cover; // Adjusts image size
+    background-position: percentage($number: 100); // Adjusts image position
+  }

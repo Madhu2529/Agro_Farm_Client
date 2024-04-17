@@ -1,0 +1,45 @@
+<div class="row">
+    <nav class="navbar navbar-expand-md navbar-light bg-success nav-fill w-100">
+         <a class="navbar-brand" href="#" style="font-family: Arial, Helvetica, sans-serif;font-weight: bold;">
+          <img src="assets/shopping_cart_icon.png" class="logo" alt="" srcset="">
+          <b>AGROFARM</b>
+        </a>
+         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+            <span class="navbar-toggler-icon"></span>
+         </button>
+    
+    </nav>
+</div>
+
+<!-- <div class="container">
+    <mat-toolbar color="primary">
+        <a class="navbar-brand" href="#"><img src="/assets/shopping_cart_icon.png" class="logo" alt="" srcset=""></a>
+       
+        <span>AgroFarm</span>
+        <span class="flex-spacer"></span>
+        <a mat-button routerLink="/home">Home</a>
+        <a mat-button routerLink="/about">About</a>
+        <a mat-button routerLink="/contact">Contact</a>
+        <div  style="position: absolute; top: 0; right: 0;">
+            <button mat-icon-button [matMenuTriggerFor]="userMenu">
+                <mat-icon>account_circle</mat-icon>
+              </button>
+              <mat-menu #userMenu="matMenu">
+                <a mat-button routerLink="/applicationHome/login">Sign In</a>
+                <button mat-menu-item>Profile</button>
+                <button mat-menu-item>Settings</button>
+                <button mat-menu-item>Logout</button>
+              </mat-menu>
+              <div style="position: relative;">
+                <span>Sign In</span>
+              </div>
+              
+        </div>
+        </mat-toolbar>
+      
+</div> -->
+
+
+<div>
+    <router-outlet></router-outlet>
+</div>

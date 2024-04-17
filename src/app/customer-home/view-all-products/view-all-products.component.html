@@ -1,0 +1,120 @@
+<section style="background-image: linear-gradient(70deg, #b5ee65 0%, #51e09d 100%); position: absolute; left: 0px;">
+
+    <br>
+    <div class="row" style="padding: 15px; width: 85%;">
+        <div class="col-md-9 offset-md-1">
+            <div class="input-group mb-3">
+                <input (keyup)="search()" type="text" class="form-control"
+                    placeholder="Search using product name or category..." [(ngModel)]="searchText">
+                <div class="input-group-btn">
+                    <button class="btn btn-success" (click)="search()" type="button">Search</button>
+                </div>
+                <span class="fas fa-search search-icon"></span>
+
+            </div>
+        </div>
+    </div>
+
+    <br>
+
+    <div *ngIf="productListToDisplay.length!=null && productListToDisplay.length>0">
+        <div *ngIf="!viewDetails">
+            <div id="carouselExampleIndicators" class="carousel slide">
+                <div class="carousel-indicators">
+                  <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                  <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                  <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                </div>
+                <div class="carousel-inner">
+                  <div class="carousel-item ">
+                    <img src=".../../../../../assets/Products/slider1.jpg" class="d-block w-100" alt="First Slide" >
+                  </div>
+                  <div class="carousel-item ">
+                    <img src=".../../../../../assets/Products/slider2.jpg" class="d-block w-100" alt="Second Slide" >
+                  </div>
+                  <div class="carousel-item active">
+                    <img src=".../../../../../assets/Products/slider3.jpg" class="d-block w-100" alt="Third Slide" >
+                  </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Next</span>
+                </button>
+              </div>
+
+              <br>
+              
+            <div class="row row-cols-1 row-cols-md-1 g-4">
+                <div class="card-group" style="text-align: center;">
+                    
+                    <div *ngFor="let product of productListToDisplay" style="padding: 2px;">
+                        <a [routerLink]="" class="nav-link" (click)="setSelectedProduct(product)">
+                            
+                            <div class="card h-100 hoverable">
+                                <div class="col">
+                                    <div class="cart-header text-white bg-info" style="background-color: cornflowerblue;">
+                                        <div class="text-truncate">{{product.category + " - " + product.name}}</div>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="image-box" style="padding: 0;
+                                           padding-left: 1px;">
+                                            <img [src]="'assets/Products/' + product.productId + '.jpg'"
+                                                class="img-responsibe center-block" alt="Image Not Found"
+                                                onError="this.src='assets/404.png'">
+                                        </div>
+                                        <br>
+                                        
+                                        <div>
+                                            <span class="success-message">
+                                                <p>
+                                                    <strong>Rs.{{product.price}}</strong>
+                                                </p>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- <div class="card-footer">
+                                        <div class="row">
+                                            <div class="offset-md-0">
+                                                <span class="success-message">
+                                                    <p>
+                                                        <strong>Rs.{{product.price}}</strong>
+                                                    </p>
+                                                </span>
+                                                 <button class="btn btn-dark w-100 col-4" style="float: right;" (click)="addToCart(product)">
+                                                    Add To Cart</button> 
+                                            </div>
+                                        </div>
+                                        <br>
+                                    
+                                    
+                                </div> -->
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div *ngIf="productListToDisplay.length==0">
+        <div class="field-error-message" style="font-size: 20px;">No products available!!</div>
+    </div>
+
+    <div *ngIf="viewDetails">
+        <div class="row">
+            <div class="col-md-2">
+                <a [routerLink]="" (click)="viewDetails=false" class="btn btn-dark"
+                    style="left: 250px; position: relative;">
+                    Back</a>
+            </div>
+        </div>
+        
+        <app-product-details [selectedProduct]="selectedProduct"></app-product-details>
+    </div>
+</section>

@@ -1,0 +1,105 @@
+
+
+
+
+// media query for responsiveness (adjust 600px as necessary)
+// @media only screen and (max-width: 600px)  {
+//     .login-container {
+//         mat-card-image,
+//         mat-card-content {
+//             flex: 1 1 100%; // sets flex-basis to 100%
+//         }
+//     }
+// }
+
+// .main-div {
+//     padding: 0%;
+// }
+
+
+// @import url('https://fonts/googleapis.com/css2?family=Rajdhani:wght@500&display=swap');
+
+.buttonDesign {
+    background-color: #9a6160;
+    color: black;
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 23px;
+    height: 40px;
+    font-weight: 400;
+    transition: ease-in-out 0.7s;
+    border-radius: 5%;
+}
+
+.buttonDesign:hover {
+    border-top-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+
+.btn1 {
+    margin-left: 10px;
+}
+
+.btn2 {
+    margin-left: 50px;
+}
+
+.background {
+    margin-top: 70px;
+}
+
+.center-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* This ensures the container takes the full height of the viewport */
+  }
+
+.example-full-width {
+    width: 100%;
+  }
+
+.form_layout{
+    margin-top: auto;
+    padding: 48px 64px;
+  }
+
+button:disabled,
+button[disabled] {
+    border: 1px solid #999999;
+    background-color: #cccccc;
+    color: #666666;
+}
+
+.card {
+  border-radius: 5px;
+  background-color: #f8f9fa;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+}
+
+.card-header h3 {
+  color: #333;
+  font-weight: bold;
+}
+
+.form-control {
+  border-radius: 3px;
+  border-color: #ddd;
+}
+
+.btn-primary {
+  background-color: #007bff;
+  border-color: #007bff;
+}
+
+.mt-3 a {
+  color: #333;
+  text-decoration: none;
+}
+.card-body {
+  background-image: url("/assets/agri.jpg");
+  background-size: cover;
+  background-position: center;
+  height: 60px; /* Match the height of the navbar */
+  width: 100%; /* Ensure the background covers the entire width */
+
+}

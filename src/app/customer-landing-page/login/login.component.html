@@ -1,0 +1,108 @@
+
+<!-- <section class="h-100" style="background-image: linear-gradient(70deg, #b5ee65 0%, #51e09d 100%);"> -->
+<!-- <section class="h-100 card-body text-black"> -->
+<section class="card-body h-100 text-black" style="background-position: center;">
+
+    <div class="container py-5 h-50">
+        <div class="row d-flex justify-content-center align-items-center h-50">
+            <div class="col col-xl-10">
+                <div class="card" >
+                    <div class="row g-0">
+                        <div class="col-md-6 col-lg-12 d-flex align-items-center">
+                            <!-- <div class="card-body p-4 p-lg-5 text-black"> -->
+                            <div class="card-body h-100 p-4 p-lg-5 text-black" style="background-image: linear-gradient(70deg, #b5ee65 0%, #51e09d 100%); ">
+
+                                <div>
+                                    <br>
+                                    <h3 *ngIf="successMessage!=null && successMessage!=''" class="alert alert-danger" role="alert">
+                                        {{successMessage}}
+                                    </h3>
+                                    <h3 *ngIf="errorMessage!=null && errorMessage!=''" class="alert alert-danger" role="alert">
+                                        {{errorMessage}}
+                                    </h3>
+                                </div>
+
+                                <form class="form" [formGroup]="loginForm" (ngSubmit)="login()">
+
+                                    <div class="d-flex align-items-center mb-3 pb-1">
+                                        <i class="fas fa-cubes fa-2x me-3" style="color: #ff6219;"></i>
+                                        <span class="h1 fw-bold mb-0"><img height="70px" width="200px"
+                                                style="margin-left: -25px;" src="assets/AgroFarm.png"></span>
+                                    </div>
+
+                                    <div class="d-flex justify-content-center">
+                                        <h1 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">LOGIN FORM </h1>
+                                    </div>
+                               
+
+                                    <div class="form-floating form-group mb-4">
+                                        <input type="email" class="form-control" id="email-ip"
+                                            placeholder="Enter your Email ID" formControlName="emailId">
+                                        <label for="email-ip">Email ID</label>
+                                        <div
+                                            *ngIf="loginForm.controls['emailId'].invalid && loginForm.controls['emailId'].touched">
+                                            <div class="field-error-message"
+                                                *ngIf="loginForm.controls['emailId'].hasError('required')">
+                                                Email ID is mandatory
+                                            </div>
+                                            <div class="field-error-message"
+                                                *ngIf="loginForm.controls['emailId'].dirty && loginForm.controls['emailId'].hasError('emailIdPatternError')">
+                                                Email ID is Pattern is invalid
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <br>
+
+                                    <div class="form-floating form-group mb-3">
+                                        <input type="password" class="form-control" id="password-ip"
+                                            placeholder="Enter your password" formControlName="password">
+                                        <label for="password-ip">Password</label>
+                                        <div
+                                            *ngIf="loginForm.controls['password'].invalid && loginForm.controls['password'].touched ">
+                                            <div class="field-error-message"
+                                                *ngIf="loginForm.controls['password'].hasError('required')">
+                                                Password is mandatory
+                                            </div>
+                                            <div class="field-error-message"
+                                                *ngIf="loginForm.controls['password'].dirty && loginForm.controls['password'].hasError('passwordPatternError')">
+                                                Password Pattern is invalid
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <br>
+                                    <br>
+
+
+                                    <div class="row">
+                                        <button class="col-md-4 offset-md-1 buttonDesign btn1"
+                                            [disabled]="!loginForm.valid" type="submit">Login</button>
+                                        <!-- <br><br> -->
+                                        <button class="col-md-4 offset-md-1 buttonDesign btn1" type="reset"
+                                            (click)="errorMessage = ''" [disabled]="loginForm.pristine">Reset</button>
+                                    </div>
+
+                                </form>
+                                <br>
+                                <br>
+
+                                <h5 *ngIf="tryToLogin" class="text-center text-info">
+                                    Logging...Please Wait!!
+                                </h5>
+
+                                <h3 class="error-message alert-error text-justify"> {{ errorMessage }}</h3>
+                                <br />
+
+                                <h3 class="text-info">If you Don't have an account? <a routerLink="../register">
+                                        Register here</a></h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</section>

@@ -1,0 +1,152 @@
+<!-- <section class="h-100 card-body text-black" style="background-image: linear-gradient(70deg, #b5ee65 0%, #51e09d 100%); position: relative;"> -->
+
+
+    <div class="container py-5 h-50">
+        <div class="row d-flex justify-content-center align-items-center h-50">
+            <div class="col col-xl-10">
+                <div class="card">
+                    <div class="row g-0">
+                        <div class="col-md-6 col-lg-12 d-flex align-items-center">
+                            <div class="card-body h-100 p-4 p-lg-5 text-black">
+                                
+                                <div>
+                                    <br>
+                                    <h3 *ngIf="successMessage!=null && successMessage!=''" class="alert alert-danger" role="alert">
+                                        {{successMessage}}
+                                    </h3>
+                                    <h3 *ngIf="errorMessage!=null && errorMessage!=''" class="alert alert-danger" role="alert">
+                                        {{errorMessage}}
+                                    </h3>
+                                </div>
+
+                                <form class="form" [formGroup]="cardForm" (ngSubmit)="addCardsOfCustomer()">
+
+                                    <div class="d-flex align-items-center justify-content-center">
+                                        <h1 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">
+                                             ADD YOUR CARD</h1>
+                                    </div>
+                                    
+
+
+                                    <div class="form-group mb-4">
+                                        <label for="nameOnCard">Name On Card</label>
+                                        <input class="form-control" id="email-ip" placeholder="Enter your Name On Card"
+                                            formControlName="nameOnCard" />
+
+                                        <div
+                                            *ngIf="cardForm.controls['nameOnCard'].invalid && cardForm.controls['nameOnCard'].touched">
+
+                                            <div class="field-error-message"
+                                                *ngIf="cardForm.controls['nameOnCard'].hasError('required')">
+                                                Name on card is mandatory
+                                            </div>
+                                            <div class="field-error-message"
+                                                *ngIf="cardForm.controls['nameOnCard'].dirty && cardForm.controls['nameOnCard'].hasError('nameOnCardPatternError')">
+                                                Name Pattern is invalid
+                                            </div>
+                                        </div>
+                                    </div><br>
+
+                                    <div class="form-group mb-4">
+                                        <label for="cardNumber">Card Number</label>
+                                        <input class="form-control" id="cardNumber-ip" placeholder="Enter your Card Number"
+                                            formControlName="cardNumber" />
+
+                                        <div
+                                            *ngIf="cardForm.controls['cardNumber'].invalid && cardForm.controls['cardNumber'].touched">
+
+                                            <div class="field-error-message"
+                                                *ngIf="cardForm.controls['cardNumber'].hasError('required')">
+                                                Card Number is mandatory
+                                            </div>
+                                            <div class="field-error-message"
+                                                *ngIf="cardForm.controls['cardNumber'].dirty && cardForm.controls['cardNumber'].hasError('cardNumberPatternError')">
+                                                Card Number Pattern is invalid 
+                                            </div>
+                                        </div>
+                                    </div><br>
+
+                                    
+                                    <div class="form-group mb-4">
+                                        <label for="cardType">Card Type</label>
+                                        <input class="form-control" id="cardType-ip" placeholder="Enter your Card Type"
+                                            formControlName="cardType" />
+
+                                        <div
+                                            *ngIf="cardForm.controls['cardType'].invalid && cardForm.controls['cardType'].touched">
+
+                                            <div class="field-error-message"
+                                                *ngIf="cardForm.controls['cardType'].hasError('required')">
+                                                Card Type is mandatory
+                                            </div>
+                                            <div class="field-error-message"
+                                                *ngIf="cardForm.controls['cardType'].dirty && cardForm.controls['cardType'].hasError('cardTypePatternError')">
+                                                Card Type Pattern is invalid cardType
+                                            </div>
+                                        </div>
+                                    </div><br>
+
+
+                                    <div class="form-group mb-4">
+                                        <label for="expiryDate">Expiry Date</label>
+                                        <input class="form-control" id="expiryDate-ip" placeholder="Enter your Expiry Date"
+                                            formControlName="expiryDate" />
+
+                                        <div
+                                            *ngIf="cardForm.controls['expiryDate'].invalid && cardForm.controls['expiryDate'].touched">
+
+                                            <div class="field-error-message"
+                                                *ngIf="cardForm.controls['expiryDate'].hasError('required')">
+                                                Expiry Date is mandatory
+                                            </div>
+                                            <div class="field-error-message"
+                                                *ngIf="cardForm.controls['expiryDate'].dirty && cardForm.controls['expiryDate'].hasError('expiryDatePatternError')">
+                                                Expiry Date Pattern is invalid cardType
+                                            </div>
+                                        </div>
+                                    </div><br>
+
+
+                                    <div class="form-group mb-4">
+                                        <label for="cvv">CVV</label>
+                                        <input class="form-control" id="cvv-ip" placeholder="Enter your CVV"
+                                            formControlName="cvv" />
+
+                                        <div
+                                            *ngIf="cardForm.controls['cvv'].invalid && cardForm.controls['cvv'].touched">
+
+                                            <div class="field-error-message"
+                                                *ngIf="cardForm.controls['cvv'].hasError('required')">
+                                                CVV is mandatory
+                                            </div>
+                                            <div class="field-error-message"
+                                                *ngIf="cardForm.controls['cvv'].dirty && cardForm.controls['cvv'].hasError('cvvPatternError')">
+                                                CVV Pattern is invalid cardType
+                                            </div>
+                                        </div>
+                                    </div><br>
+                                   
+                                    <div class="row d-flex justify-content-center">
+                                        <button [disabled]="!cardForm.valid" type="submit"
+                                            class="col-md-4 offset-md-1 btn1 btn-success" style="margin-left: 15px;" >
+                                            Add CARD
+                                        </button>
+                                        <!-- <br> -->
+                                        <button type="reset" [disabled]="cardForm.pristine"
+                                            class="col-md-4 offset-md-2 btn2 btn-primary" style="margin-left: 20px;">
+                                            Reset
+                                        </button>
+                                    </div>
+                                </form>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+<!-- </section> -->

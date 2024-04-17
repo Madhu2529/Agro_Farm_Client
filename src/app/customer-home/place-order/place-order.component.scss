@@ -1,0 +1,132 @@
+.mybtn-right {
+    text-align: right;
+}
+
+.radioDesign {
+    position: relative;
+    display: block;
+    padding: 10px 50px 10px 50px;
+    text-align: center;
+}
+
+.con {
+    background-image: linear-gradient(60deg, #abecd6 0%, #fbed96 100% );
+    padding: 30px;
+    height: auto;
+    width: auto;
+}
+
+.payBlock {
+    display: block;
+    position: relative;
+    margin: 0 auto;
+}
+
+.cardLogo {
+    position: absolute;
+    top: 16px;
+    right: 210px;
+}
+
+.cardData {
+    color: rgb(224, 212, 212);
+    top: 70%;
+}
+
+label {
+    margin-left: 144px;
+    margin-top: 20px;
+    background-image: url('../../../assets/Card.jpg');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    height: 280px;
+    width: 480px;
+    border-radius: 20px;
+}
+
+label:hover {
+    box-shadow: rgba(0, 0, 0, 0.35) 0 5px 15px;
+}
+
+.cNum {
+    position: relative;
+    left: 20%;
+    font-size: 28px;
+    top: 50%;
+    text-align: center;
+}
+
+.cName {
+    position: relative;
+    font-size: 20px;
+    top: 70%;
+    color: rgb(228, 159, 47);
+    left: 13%;
+}
+
+.cDate {
+    position: relative;
+    font-size: 20px;
+    top: 73%;
+    left: 45%;
+    color: rgb(228, 159, 47);
+}
+
+.cardParent:hover {
+    box-shadow: rgba(0,0,0,0.35) 0 5px 15px;
+}
+
+.overlay {
+    position:  fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    transition: opacity 500ms;
+    visibility: visible;
+    opacity: 1;
+}
+
+.popup {
+    margin: 70px auto;
+    padding: 20px;
+    background: #fff;
+    border-radius: 5px;
+    width: 30%;
+    position: relative;
+    transition: all 5s ease-in-out;
+}
+
+.popup h2 {
+    margin-top: 0;
+    color: #333;
+    font-family: Tahoma, Arial, sans-serif;
+}
+
+.popup .close {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    transition: all 200ms;
+    font-size: 30px;
+    font-weight: bold;
+    text-decoration: none;
+    color: #333;
+}
+
+.popup .close:hover {
+    color: #06d814;
+    cursor: pointer;
+}
+
+.popup .content {
+    max-height: 30%;
+    overflow: auto;
+}
+
+@media screen and (max-width: 70px) {
+    .popup {
+        width: 70%;
+    }
+}

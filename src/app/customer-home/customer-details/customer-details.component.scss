@@ -1,0 +1,66 @@
+.upper-block {
+    background-image: linear-gradient(70deg, #b5ee65 0%, #51e09d 100%);
+    padding: 3%;
+    width: 100%;
+    font-size: 200%;
+    text-align: center;
+    font-family: brush-script MT;
+    font-weight: 800;
+}
+
+.middle-block {
+    padding-top: 5%;
+    padding-bottom: 2%;
+    height: 57%;
+    padding-left: 30%;
+    background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
+}
+
+.name {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 400%;
+    font-weight: 1000;
+    text-align: center;
+}
+
+.MObutton {
+    margin-left: 69%;
+}
+
+.user-image {
+    border-radius: 50%;
+    position: absolute;
+    z-index: 100;
+    margin-top: 4%;
+    margin-left: 6%;
+}
+
+.lower-block {
+    background-image: linear-gradient(60deg, #abecd6 0%, #fbed96 100%);
+    padding: 4% 2%;
+    overflow: auto;
+}
+
+.lower-block1 {
+    display: inline-block;
+    background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
+    font-family: serif;
+    width: 37%;
+    padding: 3%;
+}
+
+.font {
+    font-size: large;
+}
+
+.lower-block2 {
+    position: relative;
+    width: 37%;
+    background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
+    float: right;
+    padding: 3%;
+}
+
+a {
+    cursor: pointer;
+}

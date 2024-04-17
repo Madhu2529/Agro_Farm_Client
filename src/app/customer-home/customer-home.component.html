@@ -1,0 +1,62 @@
+<nav class="navbar navbar-expand-md bg-success navbar-light " style="margin-left: -15px; margin-right: -15px;">
+
+    <a class="navbar-brand" routerLink="/home" style="font-family: Arial, Helvetica, sans-serif;font-weight: bold;">
+        <!-- <img src="/assets/shopping_cart_icon.png" alt="" subset=""> -->
+        <!-- <i class="fas fa-solid fa-farm"><b>AGROFARM</b></i> -->
+        <i style="font-size: 40px" class="fas fa-shipping-fast" aria-hidden="true">&nbsp;</i>
+        <strong style="font-size: 30px">AGROFARM</strong>
+        
+    </a>
+
+    <button class="navbar-toggler" type="button" data-toggler="collapse" data-target="#collapsibleNavbar">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="collapsibleNavbar">
+
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a routerLink="products" routerLinkActive="active" class="nav-link">Products</a>
+            </li>
+        </ul>
+
+        <ul class="nav navbar-nav ml-auto">
+            <li class="nav-item">
+                <a routerLink="cart" routerLinkActive="active" class="nav-link">
+                    <!-- <span id="boot-icon" class="bi bi-cart-x">Cart</span> -->
+                    <i style="font-size: 30px;" class="fas fa-cart-plus"></i>
+                    
+                    <span style="font-size: 10px;" class="cart badge badge-danger">{{cart.length}}</span>
+                </a>
+            </li>
+        </ul>
+
+        <ul class="nav navbar-nav ml-auto" style="padding-left: 80%;">
+            <li class="nav-item dropdown" routerLinkActive="active">
+                <button class="bg-success nav-link dropdown-toggle menu-button" mat-button [matMenuTriggerFor]="menu">
+                    {{loggedInCustomer.name}}
+                </button>
+                <mat-menu #menu="matMenu">
+                    <button mat-menu-item>
+                        <a routerLink="details" routerLinkActive="active" class="nav-link">My Details</a>
+                    </button>
+
+                    <button mat-menu-item>
+                        <a routerLink="viewOrder" routerLinkActive="active" class="nav-link">My Orders</a>
+                    </button>
+
+                    <button mat-menu-item>
+                        <a class="nav-link" routerLinkActive="active" (click)="logOut()">LogOut</a>
+                    </button>
+                </mat-menu>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+
+<div>
+    <div class="col-md-8 offset-md-2">
+        <router-outlet></router-outlet>
+    </div>
+</div>

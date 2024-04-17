@@ -1,0 +1,256 @@
+<!-- <section style="background-image: linear-gradient(70deg, #b5ee65 0%, #51e09d 100%);width: 1475px; height: 500px;">
+    <div class="row">
+
+        Write the code to display the success and error message after adding product to the cart
+        <div class="col-12">
+            <h5 *ngIf="successMessage!=null && successMessage!=''" class="success-message">{{successMessage}}</h5>
+            <h5 *ngIf="errorMessage!=null && errorMessage!=''" class="error-message">{{errorMessage}}</h5>
+        </div>
+
+
+        <br><br>
+        <ng-container *ngIf="selectedProduct">
+            <div class="card" style="width: 267px; position: relative; left: 250px;">
+
+                Write the code to display the selected product image and Add to Cart Button
+                <div class="card hoverable">
+                    <div class="card-header text-white bg-info">
+                        <div>{{selectedProduct.category+" - "+ selectedProduct.name}}</div>
+                    </div>
+                </div>
+
+                <div class="card-body">
+                    <div class="image-box">
+                        <img [src]="'assets/Products/'+ selectedProduct.productId +'.jpg'"
+                            class="img-responsive center-block" alt="Image Not Found"
+                            onError="this.src='assets/404.png'">
+                    </div>
+                </div>
+
+                <br>
+
+                <div class="card-body">
+                    <div class="row">
+                        <div class="offset-md-0">
+                            <button class="btn btn-dark w-100" style="float: right;" (click)="addToCart()">
+                                Add To Cart</button>
+                        </div>
+                    </div>
+                    <br>
+                </div>
+
+            </div>
+
+            <div class="card" style="width: 353px; left: 260px;">
+
+                Write the code to display the selected product details like
+                    name, brand, category, features and price
+
+                <div class="text-left text-block">
+                    <h4>
+                        <ins><b>{{selectedProduct.category+" - "+selectedProduct.name}}</b></ins>
+                    </h4>
+                </div>
+
+                <table class="table table-borderless text-black">
+                    <tr>
+                        <th>
+                            <span class="text-muted">
+                                <b>Product Id</b>
+                            </span>
+                        </th>
+                        <td>
+                            {{selectedProduct.productId}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            <span class="text-muted">
+                                <b>Category:</b>
+                            </span>
+                        </th>
+                        <td>
+                            {{selectedProduct.category}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            <span class="text-muted">
+                                <b>Features:</b>
+                            </span>
+                        </th>
+                        <td>
+                            <div class="text-justify">
+                                <div *ngFor="let item of selectedProduct.description|productDescription">
+                                    <dd>{{item}}</dd>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <th>
+                            <span class="text-muted">
+                                <b>Price:</b>
+                            </span>
+                        </th>
+
+                        <td>
+                            <span class="success-message">
+                                <strong>Rs. {{selectedProduct.price *
+                                    (1-selectedProduct.discount/100)|number:'1.2-2'}}</strong>
+                                <div class="clearfix"></div>
+                                <span class="field-error-message">
+                                    <del>Rs.{{selectedProduct.price|number:'1.2-2'}}</del>
+                                </span>
+                            </span>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <th>
+                            <span class="text-muted">
+                                <b>Quantity</b>
+                            </span>
+                        </th>
+                        <td>
+                            <strong>
+
+                                <input type="number" name="cartProd" id="cartProd" placeholder="Enter the Quantity"> 
+                         {{selectedProduct.quantity}}  
+
+                                {{}}
+
+
+                            </strong>
+                        </td>
+                    </tr><br>
+
+                    <tr>
+                        <th>
+                            <span class="text-muted">
+                                <b>Discount:</b>
+                            </span>
+                        </th>
+                        <td>
+                            <strong>
+                                <span>
+                                    {{selectedProduct.discount/100|percent}}
+                                </span>
+                            </strong>
+                        </td>
+                    </tr>
+                </table>
+
+            </div>
+        </ng-container>
+
+
+    </div>
+
+</section> -->
+
+
+
+<section class="py-5" *ngIf="selectedProduct" style="width: 1475px; height: 500px;  padding-bottom: 150px;">
+    <!-- Write the code to display the success and error message after adding product to the cart -->
+    <div class="col-12">
+        <h5 *ngIf="successMessage!=null && successMessage!=''" class="alert alert-success" role="alert">
+            {{successMessage}}</h5>
+        <h5 *ngIf="errorMessage!=null && errorMessage!=''" class="alert alert-danger" role="alert">{{errorMessage}}</h5>
+    </div>
+
+    <div class="container px-4 px-lg-5 my-5">
+        <div class="row gx-4 gx-lg-5 align-items-center">
+            <div class="col-md-6 ">
+                <div class="larger-image">
+                    <img [src]="'assets/Products/'+ selectedProduct.productId +'.jpg'"
+                        class="img-responsive center-block " alt="Image Not Found" onError="this.src='assets/404.png'"
+                        style="width: 100%; max-width: 400px; height: auto;">
+                </div>
+
+            </div>
+            <div class="col-md-6">
+                <div class="small mb-1"> Product Details:</div>
+                <h1 class="display-5 fw-bolder">
+                    <div class="text-left text-block">
+                        <h4>
+                            <ins><b>{{selectedProduct.category+" - "+selectedProduct.name}}</b></ins>
+                        </h4>
+                    </div>
+                </h1>
+                <div class="fs-5 mb-3">
+                    <span class="success-message">
+                        <strong>Rs. {{selectedProduct.price *
+                            (1-selectedProduct.discount/100)|number:'1.2-2'}}</strong>
+                        <div class="clearfix"></div>
+                        <span class="field-error-message">
+                            <del>Rs.{{selectedProduct.price|number:'1.2-2'}}</del>
+                        </span>
+                    </span>
+                </div>
+                <div class="form-group">
+                    <label for="quantityInput">Quantity:</label>
+                    <!-- <div class="input-group">
+                        <div class="input-group-prepend">
+                            <button class="btn btn-outline-secondary" type="button"
+                                (click)="decrementQuantity()">-</button>
+                        </div>
+                        <input type="number" id="quantityInput" name="quantityInput" class=""
+                            [(ngModel)]="selectedProduct.quantity">
+                        <div class="input-group-append">
+                            <button class="btn btn-outline-secondary" type="button"
+                                (click)="incrementQuantity()">+</button>
+                        </div>
+                    </div> -->
+
+                    <div>
+                        <!-- Button to decrease quantity -->
+                        <button (click)="alter('-')">-</button>
+                        
+                        <!-- Display product quantity -->
+                        <input type="text" [(ngModel)]="this.selectedProduct.quantity" readonly>
+                      
+                        <!-- Button to increase quantity -->
+                        <button (click)="alter('+')" >+</button>
+                      </div>
+                      
+                    
+                </div>
+
+                <div>
+                    <strong>
+                        Discount:
+                        <span>
+                            {{selectedProduct.discount/100|percent}}
+                        </span>
+                    </strong>
+                </div>
+
+                <div class="text-justify">
+                    <div *ngFor="let item of selectedProduct.description|productDescription">
+                        <dd>{{item}}</dd> Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore, impedit harum
+                        aperiam fugit quia dolorem provident ratione qui commodi beatae aut voluptas distinctio saepe
+                        laborum maxime est quas at porro!
+                    </div>
+                </div>
+
+                <br>
+
+                <div class="d-flex">
+                    <div class="row">
+                        <div class="offset-md-0">
+                            <button class="btn btn-outline-dark flex-shrink-0" type="button" style="float: right;"
+                                (click)="addToCart()">
+                                Add To Cart</button>
+                        </div>
+                    </div>
+                    <br>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<br>
+<br>

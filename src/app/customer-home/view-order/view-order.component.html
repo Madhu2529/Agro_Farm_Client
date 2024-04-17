@@ -1,0 +1,97 @@
+<div style="background-image: linear-gradient(70deg, #b5ee65 0%, #51e09d 100%); width: 1480px; height: 630px; position: absolute; left: 0px;">
+     <div class="container"><br>
+      <div class="h2 title"><b>My Orders</b></div><br>
+        <div *ngFor="let order of orders | paginate : { itemsPerPage: 10, currentPage: p}; let i = index">
+         <br>
+         <div class="card">
+            <div class="title"><b>Purchase Reciept</b></div>
+            <div class="info">
+               <div class="row">
+                  <div class="col-7">
+                      <span id="heading"><b>Date:</b></span><br>
+                      <span id="detials">{{order.dateOfOrder | date : "short"}}</span>
+                  </div>
+                  <div class="col-5 pull-right">
+                     <span id="heading"><b>Order No.</b></span><br>
+                     <span id="detials">{{order.orderId}}</span>
+                  </div>
+               </div>
+            </div>
+            <div  class="pricing" *ngFor="let o of order.orderedProduct">
+               <div class="row">
+                  <div class="col-7">
+                     <span id="name">Name: {{o.product.name}}</span>
+                  </div>
+                  <div class="col-2">
+                     <span id="name">{{o.product.quantity}}</span>
+                  </div>
+                  <div class="col-3">
+                     <span id="price">{{o.product.price | currency : "INR": 'symbol'}}</span>
+                  </div>            
+               </div>
+            </div>
+            <div class="total">
+               <div class="row">
+                  <div class="col-9"><b>Total(After discount):</b></div>
+                  <div class="col-3">{{order.totalPrice | currency : "INR" : 'symbol'}}</div>
+               </div>
+            </div>
+            <div class="pricing">
+               <div class="row">
+                  <div class="col-6"><b>Delivery Address:</b></div>
+                  <span id="name"><h6>{{order.deliveryAddress}}</h6></span>
+               </div>
+               <div class="row">
+                  <div class="col-8"><b>Delivery Date:</b></div>
+                  <button class="btn btn-link col-3" [disabled]="order.orderStatus != 'DELIVERED'" (click)="pdf(order)">Invoice</button>
+                  <span id="name"><h6>{{order.dateOfDelivery | date : "short"}}</h6></span>
+               </div>
+            </div>
+         </div>
+        </div>
+        <pagination-controls (pageChange)="p=$event" style="text-align: center;"></pagination-controls>
+     </div>
+</div>
+
+
+
+<!-- <div class="container">
+   <div class="h2 my-2 title"><b>My Orders</b></div>
+   <table class="table table-bordered table-sm text-center ">
+
+      <tr class="text-white" style="background-color: rgb(192, 182, 127);">
+
+         <th rowspan="2" class="align-middle">Order Number</th>
+         <th rowspan="2" class="align-middle">Date and Time of Order</th>
+         <th rowspan="2" class="align-middle">Address Id</th>
+         <th rowspan="2" class="align-middle">Payment Through</th>
+         <th rowspan="2" class="align-middle">Order Status</th>
+         <th rowspan="2" class="align-middle">Date of Delivery</th>
+         <th rowspan="2" class="align-middle">Download</th>
+      </tr>
+      <tr class="text-white" style="background-color: rgb(192, 182, 127);">
+         <th class="align-middle">Name</th>
+         <th class="align-middle">Quantity</th>
+         <th class="align-middle">Price</th>
+      </tr>
+
+      <tr *ngFor="let order of orders | paginate : { itemsPerPage: 10, currentPage: p}; let i = index">
+         <td class="align-middle">{{order.orderId}}</td>
+         <td class="align-middle">{{order.dateOfOrder | date : "short"}}</td>
+
+         <td class="align-middle">{{order.deliveryAddress}}</td>
+         <td class="align-middle">{{order.paymentThrough}}</td>
+         <td class="align-middle">{{order.orderStatus}}</td>
+         <td class="align-middle">{{order.dateOfDelivery}}</td>
+         <td class="align-middle">{{order.orderedProducts.productId}}</td>
+         <td class="align-middle">{{order.orderedProducts.quantity}}</td>
+         <td class="align-middle">{{order.totalPrice}}</td>
+         
+         
+         <td class="align-middle">
+            <button class="btn btn-danger" [disabled]="order.orderStatus !== 'DELIVERED'" (click)="pdf(order)"></button>
+         </td>
+      </tr>
+   </table>
+   <pagination-controls (pageChange)="p=$event" style="text-align: center;"></pagination-controls>
+</div> -->
